@@ -29,9 +29,9 @@ describe('Customer repository test', () => {
     const address = new Address(
       'Rua A',
       5,
+      'São Paulo',
+      'São Paulo',
       '9000-90',
-      'São Paulo',
-      'São Paulo',
     );
 
     customer.changeAddress(address);
@@ -44,11 +44,11 @@ describe('Customer repository test', () => {
     expect(customerModel?.toJSON()).toStrictEqual({
       id: '1',
       name: 'Customer 1',
-      city: 'São Paulo',
+      zipcode: '9000-90',
       state: 'São Paulo',
       number: 5,
       street: 'Rua A',
-      zipcode: '9000-90',
+      city: 'São Paulo',
       active: false,
       rewardPoints: 10,
     });
@@ -60,9 +60,9 @@ describe('Customer repository test', () => {
     const address = new Address(
       'Rua A',
       5,
+      'São Paulo',
+      'São Paulo',
       '9000-90',
-      'São Paulo',
-      'São Paulo',
     );
 
     customer.changeAddress(address);
@@ -109,9 +109,9 @@ describe('Customer repository test', () => {
     const address = new Address(
       'Rua A',
       5,
+      'São Paulo',
+      'São Paulo',
       '9000-90',
-      'São Paulo',
-      'São Paulo',
     );
 
     customer.changeAddress(address);
@@ -136,9 +136,9 @@ describe('Customer repository test', () => {
     const address = new Address(
       'Rua A',
       5,
+      'São Paulo',
+      'São Paulo',
       '9000-90',
-      'São Paulo',
-      'São Paulo',
     );
     const customer1 = new Customer('1', 'Customer 1');
     customer1.changeAddress(address);
@@ -170,9 +170,9 @@ describe('Customer repository test', () => {
     const address = new Address(
       'Rua A',
       5,
+      'São Paulo',
+      'São Paulo',
       '9000-90',
-      'São Paulo',
-      'São Paulo',
     );
 
     const customer1 = new Customer('1', 'Customer 1');

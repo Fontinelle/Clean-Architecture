@@ -8,15 +8,15 @@ export default class Address {
   constructor(
     street: string,
     number: number,
-    zip: string,
     city: string,
     state: string,
+    zip: string,
   ) {
     this._street = street;
     this._number = number;
-    this._zip = zip;
     this._city = city;
     this._state = state;
+    this._zip = zip;
 
     this.validate();
   }

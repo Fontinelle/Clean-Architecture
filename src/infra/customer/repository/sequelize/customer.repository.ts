@@ -10,9 +10,9 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
       name: entity.name,
       street: entity.address.street,
       number: entity.address.number,
-      zipcode: entity.address.zip,
       city: entity.address.city,
       state: entity.address.state,
+      zipcode: entity.address.zip,
       active: entity.isActive(),
       rewardPoints: entity.rewardPoints,
     });
@@ -24,9 +24,9 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
         name: entity.name,
         street: entity.address.street,
         number: entity.address.number,
-        zipcode: entity.address.zip,
         city: entity.address.city,
         state: entity.address.state,
+        zipcode: entity.address.zip,
         active: entity.isActive(),
         rewardPoints: entity.rewardPoints,
       },
@@ -51,9 +51,9 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
     const address = new Address(
       customerModel.street,
       customerModel.number,
-      customerModel.zipcode,
       customerModel.city,
       customerModel.state,
+      customerModel.zipcode,
     );
     customer.changeAddress(address);
     customer.addRewardPoints(customerModel.rewardPoints);
@@ -69,9 +69,9 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
       const address = new Address(
         customerModel.street,
         customerModel.number,
-        customerModel.zipcode,
         customerModel.city,
         customerModel.state,
+        customerModel.zipcode,
       );
       customer.changeAddress(address);
       if (customerModel.active) {

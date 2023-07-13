@@ -11,28 +11,28 @@ describe('Address unit tests', () => {
       const address = new Address(
         'Rua A',
         0,
+        'São Paulo',
+        'São Paulo',
         '9000-90',
-        'São Paulo',
-        'São Paulo',
       );
     }).toThrowError('Number is required');
   });
 
   it('should throw error when zip code is empty', () => {
     expect(() => {
-      const address = new Address('Rua A', 5, '', 'São Paulo', 'São Paulo');
+      const address = new Address('Rua A', 5, 'São Paulo', 'São Paulo', '');
     }).toThrowError('Zip Code is required');
   });
 
   it('should throw error when city is empty', () => {
     expect(() => {
-      const address = new Address('Rua A', 5, '9000-90', '', 'São Paulo');
+      const address = new Address('Rua A', 5, '', 'São Paulo', '9000-90');
     }).toThrowError('City is required');
   });
 
   it('should throw error when state is empty', () => {
     expect(() => {
-      const address = new Address('Rua A', 5, '9000-90', 'São Paulo', '');
+      const address = new Address('Rua A', 5, 'São Paulo', '', '9000-90');
     }).toThrowError('State is required');
   });
 
@@ -40,9 +40,9 @@ describe('Address unit tests', () => {
     const address = new Address(
       'Rua A',
       5,
+      'São Paulo',
+      'São Paulo',
       '9000-90',
-      'São Paulo',
-      'São Paulo',
     );
     expect(address.toString()).toBe('Rua A, 5, São Paulo, São Paulo, 9000-90');
   });
