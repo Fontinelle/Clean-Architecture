@@ -133,7 +133,7 @@ describe('E2E test for customer', () => {
     expect(findResponse.body.address.zip).toBe('Zip');
   });
 
-  it('should list one customer', async () => {
+  it('should not list one customer', async () => {
     const findResponse = await request(app).get(`/customer/id`).send();
 
     expect(findResponse.status).toBe(500);
