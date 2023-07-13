@@ -1,5 +1,4 @@
 import CustomerRepositoryInterface from '../../../domain/customer/repository/customer-repository.interface';
-import CustomerFactory from '../../../domain/customer/factory/customer.factory';
 import Address from '../../../domain/customer/value-object/address';
 import {
   InputUpdateCustomerDto,

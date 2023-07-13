@@ -1,7 +1,6 @@
-import CustomerRepository from '../../../infra/customer/repository/sequelize/customer.repository';
 import Customer from '../../../domain/customer/entity/customer';
 import Address from '../../../domain/customer/value-object/address';
-import FindCustomerUseCase from './findAll.customer.use-case';
+import FindAllCustomerUseCase from './findAll.customer.use-case';
 
 describe('Unit test find customer use case', () => {
   const customer1 = new Customer('1', 'Customer 1');
@@ -26,7 +25,7 @@ describe('Unit test find customer use case', () => {
 
   it('should list a customer', async () => {
     const customerRepository = MockCustomerRepository();
-    const useCase = new FindCustomerUseCase(customerRepository);
+    const useCase = new FindAllCustomerUseCase(customerRepository);
 
     const result = await useCase.execute();
 
