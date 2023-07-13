@@ -3,10 +3,10 @@ export interface InputUpdateCustomerDto {
   name: string;
   address: {
     street: string;
-    state: string;
     number: number;
-    zip: string;
     city: string;
+    state: string;
+    zip: string;
   };
 }
 
@@ -15,9 +15,9 @@ export interface OutputUpdateCustomerDto {
   name: string;
   address: {
     street: string;
-    state: string;
     number: number;
-    zip: string;
     city: string;
+    state: string;
+    zip: string;
   };
 }
