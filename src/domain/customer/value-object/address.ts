@@ -1,4 +1,8 @@
-export default class Address {
+import Entity from '../../@shared/entity/entity.abstract';
+import NotificationError from '../../@shared/notification/notification.error';
+import AddressValidatorFactory from '../factory/address.validator.factory';
+
+export default class Address extends Entity {
   private _street: string;
   private _number: number;
   private _zip: string;
@@ -12,6 +16,7 @@ export default class Address {
     state: string,
     zip: string,
   ) {
+    super();
     this._street = street;
     this._number = number;
     this._city = city;
@@ -42,20 +47,10 @@ export default class Address {
   }
 
   validate() {
-    if (this._street.length === 0) {
-      throw new Error('Street is required');
-    }
-    if (this._number <= 0) {
-      throw new Error('Number is required');
-    }
-    if (this._zip.length === 0) {
-      throw new Error('Zip Code is required');
-    }
-    if (this._city.length === 0) {
-      throw new Error('City is required');
-    }
-    if (this._state.length === 0) {
-      throw new Error('State is required');
+    AddressValidatorFactory.create().validate(this);
+
+    if (this.notification.hasErrors()) {
+      throw new NotificationError(this.notification.getErrors());
     }
   }
 
