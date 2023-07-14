@@ -13,7 +13,7 @@ const MockProductRepository = () => {
   };
 };
 
-describe('Unit teste delete product use case', () => {
+describe('Unit test delete product use case', () => {
   it('should delete a product', async () => {
     const productRepository = MockProductRepository();
     const productDeleteUseCase = new DeleteProductUseCase(productRepository);

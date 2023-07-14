@@ -1,11 +1,11 @@
 import { Sequelize } from 'sequelize-typescript';
+import DeleteCustomerUseCase from './delete.customer.use-case';
 import CustomerModel from '../../../infra/customer/repository/sequelize/customer.model';
 import CustomerRepository from '../../../infra/customer/repository/sequelize/customer.repository';
 import Customer from '../../../domain/customer/entity/customer';
 import Address from '../../../domain/customer/value-object/address';
-import FindCustomerUseCase from './find.customer.use-case';
 
-describe('Integration test find customer use case', () => {
+describe('Integration test delete customer use case', () => {
   let sequelize: Sequelize;
 
   beforeEach(async () => {
@@ -24,9 +24,9 @@ describe('Integration test find customer use case', () => {
     await sequelize.close();
   });
 
-  it('should find a customer', async () => {
+  it('should delete a customer', async () => {
     const customerRepository = new CustomerRepository();
-    const useCase = new FindCustomerUseCase(customerRepository);
+    const customerDeleteUseCase = new DeleteCustomerUseCase(customerRepository);
 
     const customer = new Customer('1', 'Customer 1');
     const address = new Address('Street', 5, 'City', 'State', 'Zip');
@@ -34,22 +34,8 @@ describe('Integration test find customer use case', () => {
 
     await customerRepository.create(customer);
 
-    const input = { id: '1' };
+    const output = await customerDeleteUseCase.execute({ id: customer.id });
 
-    const output = {
-      id: '1',
-      name: 'Customer 1',
-      address: {
-        street: 'Street',
-        number: 5,
-        city: 'City',
-        state: 'State',
-        zip: 'Zip',
-      },
-    };
-
-    const result = await useCase.execute(input);
-
-    expect(result).toEqual(output);
+    expect(output).toEqual(void 0);
   });
 });

@@ -25,7 +25,7 @@
   "scripts": {
     "tsc": "tsc",
     "pretest": "tsc",
-    "test": "jest",
+    "test": "jest --watch",
     "pretest:cov": "tsc",
     "test:cov": "jest --coverage",
     "dev": "nodemon src/infra/api/server.ts"

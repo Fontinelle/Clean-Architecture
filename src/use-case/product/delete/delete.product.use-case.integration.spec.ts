@@ -1,10 +1,10 @@
 import { Sequelize } from 'sequelize-typescript';
-import ProductModel from '../../../infra/product/repository/sequelize/product.model';
 import ProductRepository from '../../../infra/product/repository/sequelize/product.repository';
-import FindProductUseCase from './find.product.use-case';
+import DeleteProductUseCase from './delete.product.use-case';
+import ProductModel from '../../../infra/product/repository/sequelize/product.model';
 import ProductFactory from '../../../domain/product/factory/product.factory';
 
-describe('Integration test find product use case', () => {
+describe('Integration test delete product use case', () => {
   let sequelize: Sequelize;
 
   beforeEach(async () => {
@@ -23,24 +23,16 @@ describe('Integration test find product use case', () => {
     await sequelize.close();
   });
 
-  it('should find a product a', async () => {
+  it('should delete a product', async () => {
     const productRepository = new ProductRepository();
-    const useCase = new FindProductUseCase(productRepository);
+    const productDeleteUseCase = new DeleteProductUseCase(productRepository);
 
     const product = ProductFactory.create('a', 'Product', 100);
 
     await productRepository.create(product);
 
-    const input = { id: product.id };
+    const output = await productDeleteUseCase.execute({ id: product.id });
 
-    const output = {
-      id: product.id,
-      name: 'Product',
-      price: 100,
-    };
-
-    const result = await useCase.execute(input);
-
-    expect(result).toEqual(output);
+    expect(output).toEqual(void 0);
   });
 });

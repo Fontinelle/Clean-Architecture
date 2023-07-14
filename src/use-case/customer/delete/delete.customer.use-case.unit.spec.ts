@@ -17,7 +17,7 @@ const MockCustomerRepository = () => {
   };
 };
 
-describe('Unit teste delete customer use case', () => {
+describe('Unit test delete customer use case', () => {
   it('should delete a customer', async () => {
     const customerRepository = MockCustomerRepository();
     const customerDeleteUseCase = new DeleteCustomerUseCase(customerRepository);
