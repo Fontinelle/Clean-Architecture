@@ -5,13 +5,13 @@ describe('Customer unit tests', () => {
   it('should throw error when id is empty', () => {
     expect(() => {
       const customer = new Customer('', 'João');
-    }).toThrowError('Id is required');
+    }).toThrowError('customer: Id is required');
   });
 
   it('should throw error when name is empty', () => {
     expect(() => {
       const customer = new Customer('12', '');
-    }).toThrowError('Name is required');
+    }).toThrowError('customer: Name is required');
   });
 
   it('should change name', () => {
@@ -26,7 +26,13 @@ describe('Customer unit tests', () => {
       const customer = new Customer('12', 'João');
 
       customer.changeName('');
-    }).toThrowError('Name is required');
+    }).toThrowError('customer: Name is required');
+  });
+
+  it('should throw error when name and id are empty', () => {
+    expect(() => {
+      const customer = new Customer('', '');
+    }).toThrowError('customer: Id is required, customer: Name is required');
   });
 
   it('should activate customer', () => {
@@ -56,7 +62,7 @@ describe('Customer unit tests', () => {
       const customer = new Customer('12', 'João');
 
       customer.activate();
-    }).toThrowError('Address is mandatory to activate a customer');
+    }).toThrowError('customer: Address is mandatory to activate a customer');
   });
 
   it('should add reward points', () => {
